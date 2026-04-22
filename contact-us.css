@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #efefef;
+    padding-top: 80px;
+}
+
+.contact-hero {
+    height: 655px;
+    background: url('images/contact-hero-bg.jpg') center/cover no-repeat;
+    position: relative;
+    margin-top: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 201, 71, 0.35);
+}
+
+.bg-gray {
+    background-color: #F2F2F2;
+    padding: 80px 10%;
+}
+
+.bg-white {
+    background-color: #ffffff;
+    padding: 80px 10%;
+}
+
+.content-flex {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.content-flex.reverse {
+    flex-direction: row-reverse;
+}
+
+.img-frame img {
+    width: 110%;
+    max-width: 320px;
+    border-radius: 15px;
+    box-shadow: 15px 15px 0px var(--brand-yellow);
+}
+
+.bg-gray .content-flex {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.bg-gray .logo-side,
+.bg-gray .form-side {
+    flex: 1 1 450px;
+    max-width: 520px;
+}
+
+.bg-gray .logo-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-gray .logo-side img {
+    width: 320px;
+    max-width: 100%;
+}
+
+.bg-gray .form-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-side form {
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-row {
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+.pitch-form textarea,
+.pitch-form input {
+    max-width: 680px;
+}
+
+.logo-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-side img {
+    width: 280px;
+    max-width: 100%;
+}
+
+.text-side {
+    max-width: 600px;
+}
+
+.pitch-form {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 640px;
+    margin-top: 24px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row input {
+    width: 100%;
+}
+
+.pitch-form input,
+.pitch-form textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 14px;
+}
+
+.pitch-form textarea {
+    height: 160px;
+    resize: vertical;
+    min-height: 140px;
+}
+
+.submit-btn {
+    width: auto;
+    padding: 10px 20px;
+    text-align: center;
+    margin-top: 0;
+    border-radius: 6px;
+    justify-self: center;
+}
+
+.section-heading {
+    font-size: 34px;
+    color: var(--text-brown);
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.text-side p {
+    color: #444;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.btn-yellow {
+    background-color: var(--brand-yellow);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pitch-logo {
+    width: 220px;
+    margin: 0;
+    display: block;
+}
+
+#pitch-ideas .logo-side {
+    justify-content: flex-start;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.pitch-form input,
+.pitch-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #eee;
+}
+
+.pitch-form textarea {
+    height: 120px;
+    resize: none;
+}
+
+.btn-yellow,
+.btn-primary,
+.btn-yellow.submit-btn {
+    background-color: #FFC947;
+    color: #4D2412;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: 0.3s ease;
+}
+
+.btn-yellow:hover,
+.btn-primary:hover {
+    background-color: #e2b23d;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main,
+.container,
+.welcome-section,
+.hero-section,
+.story-hero,
+.contact-hero {
+    animation: fadeInPage 0.8s ease-out;
+}
+
+/* Mobile Responsive Overrides */
+@media (max-width: 768px) {
+    .contact-hero {
+        height: 75vh;
+        min-height: 450px;
+        background-position: center;
+    }
+
+    .bg-gray, .bg-white {
+        padding: 40px 5%;
+    }
+
+    .content-flex, 
+    .bg-gray .content-flex, 
+    .content-flex.reverse {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .img-frame {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .img-frame img {
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 10px 10px 0px var(--brand-yellow);
+    }
+
+    .section-heading {
+        font-size: 24px;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .text-side p {
+        font-size: 14px;
+        text-align: center;
+    }
+
+    #pitch-ideas .logo-side {
+        justify-content: center;
+    }
+    
+    .pitch-logo {
+        width: 180px;
+        margin: 0 auto;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .pitch-form {
+        margin-top: 15px;
+    }
+
+    .pitch-form textarea {
+        min-height: 120px;
+    }
+}

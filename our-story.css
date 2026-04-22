@@ -1,0 +1,228 @@
+:root {
+    --brand-yellow: #FFC947;
+    --text-brown: #7A4F2E;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #efefef;
+    padding-top: 80px;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.story-hero {
+    height: 655px;
+    background: url('images/story-hero.png') center/cover no-repeat;
+    position: relative;
+    margin-top: 0;
+}
+
+.story-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-overlay {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.hero-overlay h1 {
+    color: white;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.story-white-center {
+    padding: 80px 10%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.container-narrow {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.story-white-center p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+}
+
+.bg-gray {
+    background-color: #F8F8F8;
+    width: 100%;
+}
+
+.story-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 100px;
+    padding: 80px 5%;
+}
+
+.story-text {
+    flex: 1;
+}
+
+.section-heading {
+    color: var(--text-brown);
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.story-text p {
+    font-size: 16px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.story-img-frame {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.story-img-frame img {
+    width: 110%;
+    border-radius: 12px;
+    box-shadow: 18px 18px 0px var(--brand-yellow);
+    display: block;
+}
+
+.collage-container {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.top-row {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.top-row img {
+    width: calc(50% - 7.5px);
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.full-width-img {
+    width: 110%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.final-quote {
+    font-size: 24px;
+    font-style: italic;
+    color: var(--text-brown);
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main,
+.story-hero,
+.story-white-center,
+.story-flex {
+    animation: fadeInPage 0.8s ease-out;
+}
+
+/* Mobile Responsive Overrides */
+@media (max-width: 768px) {
+    .story-hero {
+        height: 60vh;
+        min-height: 400px;
+        background-position: center bottom;
+    }
+    .hero-overlay h1 {
+        font-size: 26px;
+        padding: 0 15px;
+    }
+    .story-white-center {
+        padding: 40px 5%;
+    }
+    .story-white-center p {
+        font-size: 14px;
+        text-align: center;
+    }
+    .story-flex {
+        flex-direction: column;
+        padding: 40px 5%;
+        gap: 25px;
+        text-align: center;
+    }
+    /* Custom Override: Community section needs images on top of the text */
+    #community .story-flex {
+        flex-direction: column-reverse;
+    }
+    .story-img-frame {
+        padding-right: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .story-img-frame img {
+        width: 100%;
+        box-shadow: 10px 10px 0px var(--brand-yellow);
+    }
+    .section-heading {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .story-text {
+        width: 100%;
+    }
+    .story-text p {
+        font-size: 14px;
+        text-align: center;
+    }
+    .collage-container {
+        width: 100%;
+    }
+    .top-row img {
+        height: 120px;
+        width: calc(50% - 7.5px);
+    }
+    .full-width-img {
+        width: 100%;
+        height: 160px;
+    }
+    .final-quote {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  padding-top: 80px;
+}
+
+.visit-hero {
+  width: 100%;
+}
+
+.banner-container {
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+}
+
+.visit-hero img {
+  width: 100%;
+  height: 655px;
+  object-fit: cover;
+  display: block;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+.card {
+  width: 420px;
+  background: #FFFFFF;
+  border-radius: 10px;
+  margin-right: 7%;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.store-img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 18px;
+}
+
+.card-content h2 {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.line {
+  width: 100%;
+  height: 2px;
+  background: orange;
+  margin: 30px 0 15px;
+}
+
+.info {
+  padding-top: 10px;
+}
+
+.info p {
+  margin-top: 0;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.back-btn {
+  float: right;
+  margin-bottom: 5%;
+  padding: 6px 18px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background: #eee;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: none;
+  color: #333;
+}
+
+.back-btn:visited {
+  color: #333;
+}
+
+.back-btn:hover {
+  background: #ddd;
+}
+
+.back-btn:focus {
+  outline: none;
+}
+
+.map iframe {
+  width: 600px;
+  margin-top: 12%;
+  height: 500px;
+  border-radius: 10px;
+  border: none;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+main,
+.container,
+.welcome-section,
+.hero-section,
+.story-hero,
+.contact-hero {
+  animation: fadeInPage 0.8s ease-out;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .visit-hero img {
+    height: 250px;
+  }
+  .container {
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+  }
+  .card {
+    width: 100%;
+    margin-right: 0;
+  }
+  .map iframe {
+    width: 100%;
+    height: 300px;
+    margin-top: 10px;
+  }
+  .card-content h2 {
+    font-size: 22px;
+  }
+}
