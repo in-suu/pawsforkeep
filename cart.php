@@ -390,6 +390,9 @@ $cart_total_count = array_sum($cart);
         document.querySelectorAll('.cart-badge').forEach(b => {
             b.innerText = count;
             b.style.display = count > 0 ? 'flex' : 'none';
+            b.classList.remove('pulse-animation');
+            void b.offsetWidth;
+            b.classList.add('pulse-animation');
         });
     }
 

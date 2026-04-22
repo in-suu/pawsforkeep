@@ -56,21 +56,7 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
         .auth-btn:hover { color: #FFBE3E; }
         .divider { color: #ccc; font-weight: 300; }
 
-        .cart-badge {
-            background: #D32F2F;
-            color: white;
-            border-radius: 50%;
-            min-width: 18px;
-            height: 18px;
-            font-size: 11px;
-            font-weight: bold;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid white;
-            padding: 0 3px;
-            line-height: 1;
-        }
+        /* Moved cart-badge to navbar-footer.css */
 
         .sticky-cart {
             position: fixed;
@@ -94,26 +80,7 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
             box-shadow: 0 6px 24px rgba(255,190,62,0.6), 0 3px 10px rgba(0,0,0,0.2);
         }
         .sticky-cart svg { width: 28px; height: 28px; fill: #ffffff; }
-        .sticky-cart .cart-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            background: #D32F2F;
-            color: #fff;
-            border-radius: 50%;
-            min-width: 22px;
-            height: 22px;
-            font-size: 11px;
-            font-weight: 700;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid #fff;
-            padding: 0 4px;
-            font-family: 'Poppins', sans-serif;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
-            line-height: 1;
-        }
+        /* Moved sticky-cart cart-badge to navbar-footer.css */
 
         .cart-flight {
             position: fixed;
@@ -354,6 +321,9 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
         document.querySelectorAll('.cart-badge').forEach(b => {
             b.innerHTML = count;
             b.style.display = count > 0 ? 'flex' : 'none';
+            b.classList.remove('pulse-animation');
+            void b.offsetWidth;
+            b.classList.add('pulse-animation');
         });
     }
 
