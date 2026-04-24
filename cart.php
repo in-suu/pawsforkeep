@@ -155,21 +155,8 @@ $cart_total_count = array_sum($cart);
 
     <?php include 'navbar.php'; ?>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var toggle = document.getElementById("mobileToggle");
-            var navLinks = document.getElementById("navLinks");
-            if (toggle) {
-                toggle.addEventListener("click", function() {
-                    navLinks.classList.toggle("mobile-active");
-                });
-            }
-        });
-    </script>
-
     <div class="cart-page">
 
-        <!-- Column header bar -->
         <div class="cart-container">
             <div class="cart-header">
                 <div><input type="checkbox" id="selectAllTop" onclick="toggleSelectAll(this)"></div>
@@ -181,7 +168,6 @@ $cart_total_count = array_sum($cart);
             </div>
         </div>
 
-        <!-- Product rows card -->
         <div class="cart-items-card" id="cart-items-list">
             <?php
             if (!empty($cart)) {
@@ -242,7 +228,6 @@ $cart_total_count = array_sum($cart);
             ?>
         </div>
 
-        <!-- Sticky checkout bar -->
         <div class="checkout-bar">
             <div class="checkout-left">
                 <div style="display:flex; align-items:center; gap:10px;">
@@ -258,13 +243,24 @@ $cart_total_count = array_sum($cart);
                     Total (<span id="summary-items">0</span> item<span id="summary-items-s">s</span>):
                     <span class="total-price-val" id="grand-total">₱ 0.00</span>
                 </span>
-                <button class="checkout-btn">Check Out</button>
+                
+                <button class="checkout-btn" onclick="goToCheckout()">Check Out</button>
             </div>
         </div>
 
-    </div><!-- /.cart-page -->
+    </div><script>
+    // ── Checkout Connection ───────────────────────────────────────
+    function goToCheckout() {
+        const checked = document.querySelectorAll('.item-checkbox:checked');
+        if (checked.length === 0) {
+            alert('Please select at least one item to checkout! 🐾');
+            return;
+        }
+        // Dahil ang checkout.php mo ay binabasa ang $_SESSION['cart'],
+        // dideretso na tayo doon.
+        window.location.href = 'checkout.php';
+    }
 
-<script>
     // ── Select All ────────────────────────────────────────────────
     function toggleSelectAll(checkbox) {
         document.querySelectorAll('.item-checkbox').forEach(cb => cb.checked = checkbox.checked);
@@ -277,18 +273,21 @@ $cart_total_count = array_sum($cart);
     function updateCheckoutBar() {
         let totalItems = 0, grandTotal = 0, allChecked = true;
         const checkboxes = document.querySelectorAll('.item-checkbox');
-        if (!checkboxes.length) allChecked = false;
-
-        checkboxes.forEach(cb => {
-            if (cb.checked) {
-                const qty   = parseInt(cb.getAttribute('data-qty'));
-                const price = parseFloat(cb.getAttribute('data-price'));
-                totalItems += qty;
-                grandTotal += qty * price;
-            } else {
-                allChecked = false;
-            }
-        });
+        
+        if (checkboxes.length === 0) {
+            allChecked = false;
+        } else {
+            checkboxes.forEach(cb => {
+                if (cb.checked) {
+                    const qty   = parseInt(cb.getAttribute('data-qty'));
+                    const price = parseFloat(cb.getAttribute('data-price'));
+                    totalItems += qty;
+                    grandTotal += qty * price;
+                } else {
+                    allChecked = false;
+                }
+            });
+        }
 
         document.getElementById('selectAllTop').checked    = allChecked;
         document.getElementById('selectAllBottom').checked = allChecked;
@@ -301,7 +300,6 @@ $cart_total_count = array_sum($cart);
 
     // ── +/− Quantity ──────────────────────────────────────────────
     function updateQty(id, delta, btnElement) {
-        // Disable both +/− buttons while the request is in flight
         const row = document.querySelector(`.cart-item[data-id="${id}"]`);
         if (!row) return;
         row.querySelectorAll('.qty-btn').forEach(b => b.disabled = true);
@@ -315,7 +313,7 @@ $cart_total_count = array_sum($cart);
         .then(data => {
             if (data.status === 'removed') {
                 row.remove();
-                updateCartBadge(data.new_total);
+                if (typeof updateCartBadge === 'function') updateCartBadge(data.new_total);
                 updateCheckoutBar();
                 return;
             }
@@ -329,11 +327,10 @@ $cart_total_count = array_sum($cart);
                 qtyInput.value = data.new_qty;
                 totalCell.innerText = '₱' + newTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-                // Keep checkbox data-qty in sync
                 const cb = row.querySelector('.item-checkbox');
                 if (cb) cb.setAttribute('data-qty', data.new_qty);
 
-                updateCartBadge(data.new_total);
+                if (typeof updateCartBadge === 'function') updateCartBadge(data.new_total);
                 updateCheckoutBar();
             }
         })
@@ -355,7 +352,7 @@ $cart_total_count = array_sum($cart);
         .then(r => r.json())
         .then(data => {
             document.querySelector(`.cart-item[data-id="${id}"]`)?.remove();
-            updateCartBadge(data.new_total);
+            if (typeof updateCartBadge === 'function') updateCartBadge(data.new_total);
             updateCheckoutBar();
         })
         .catch(err => console.error('removeItem error:', err));
@@ -379,21 +376,10 @@ $cart_total_count = array_sum($cart);
         .then(results => {
             ids.forEach(id => document.querySelector(`.cart-item[data-id="${id}"]`)?.remove());
             const lastTotal = results[results.length - 1]?.new_total ?? 0;
-            updateCartBadge(lastTotal);
+            if (typeof updateCartBadge === 'function') updateCartBadge(lastTotal);
             updateCheckoutBar();
         })
         .catch(err => console.error('removeSelected error:', err));
-    }
-
-    // ── Update cart badge everywhere ──────────────────────────────
-    function updateCartBadge(count) {
-        document.querySelectorAll('.cart-badge').forEach(b => {
-            b.innerText = count;
-            b.style.display = count > 0 ? 'flex' : 'none';
-            b.classList.remove('pulse-animation');
-            void b.offsetWidth;
-            b.classList.add('pulse-animation');
-        });
     }
 
     // Init on load

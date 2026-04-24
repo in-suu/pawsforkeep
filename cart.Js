@@ -11,23 +11,20 @@ function addToCart(productId) {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: 'product_id=' + encodeURIComponent(productId)
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                updateCartBadge(data.new_count);
-            } else {
-                console.error('Cart error:', data.message);
-            }
-        })
-        .catch(error => console.error('Fetch error:', error));
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            updateCartBadge(data.new_count);
+        } else {
+            console.error('Cart error:', data.message);
+        }
+    })
+    .catch(error => console.error('Fetch error:', error));
 }
 
 function updateCartBadge(count) {
     document.querySelectorAll('.cart-badge').forEach(b => {
         b.innerText = count;
         b.style.display = count > 0 ? 'flex' : 'none';
-        b.classList.remove('pulse-animation');
-        void b.offsetWidth;
-        b.classList.add('pulse-animation');
     });
 }

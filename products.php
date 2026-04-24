@@ -38,8 +38,10 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products | Paws for Keeps</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="products.css">
-    <link rel="stylesheet" href="navbar-footer.css">
+    
+    <link rel="stylesheet" href="products.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="navbar-footer.css?v=<?php echo time(); ?>">
+    
     <style>
         .dropdown { position: relative; display: flex; align-items: center; }
         .dropdown-content { display: none; position: absolute; background-color: #FFFFFF; min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 5000; top: 100%; left: 0; border-radius: 5px; }
@@ -55,8 +57,6 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
         .auth-btn { text-decoration: none; color: #4D2412; font-weight: 500; transition: 0.3s; }
         .auth-btn:hover { color: #FFBE3E; }
         .divider { color: #ccc; font-weight: 300; }
-
-        /* Moved cart-badge to navbar-footer.css */
 
         .sticky-cart {
             position: fixed;
@@ -80,7 +80,6 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
             box-shadow: 0 6px 24px rgba(255,190,62,0.6), 0 3px 10px rgba(0,0,0,0.2);
         }
         .sticky-cart svg { width: 28px; height: 28px; fill: #ffffff; }
-        /* Moved sticky-cart cart-badge to navbar-footer.css */
 
         .cart-flight {
             position: fixed;
@@ -148,7 +147,7 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
         <main class="main" id="mainContent">
 
             <div class="banner" style="width: 100%; margin-bottom: 20px;">
-                <img src="images/banner.png" alt="Banner" style="width: 100%; border-radius: 10px; display: block;">
+                <img src="banner.png" alt="Banner" style="width: 100%; border-radius: 10px; display: block;">
             </div>
 
             <div class="mobile-only-controls" style="display: none; padding: 15px; background: #E1E1E1; margin: -20px -10px 15px -10px;">
@@ -191,14 +190,15 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
 
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
-                        $db_path = $row['prod_image']; 
-                        $encoded_path = rawurlencode($db_path);
-                        $final_path = str_replace('%2F', '/', $encoded_path); 
-                        $image_url = $cloudinary_base . $final_path;
+                        // FIX: Pagbuo ng Cloudinary URL na kumpleto at dynamic
+                        $db_image_path = trim($row['prod_image'], '/');
+                        $image_url = $cloudinary_base . str_replace(' ', '%20', $db_image_path);
                 ?>
                         <div class="card">
                             <button class="info-btn" onclick="openInfo('<?php echo addslashes($row['prod_name']); ?>', '<?php echo addslashes($row['prod_description']); ?>', '<?php echo $image_url; ?>')">i</button>
+                            
                             <img src="<?php echo $image_url; ?>" onerror="this.src='images/logo.png'" alt="Product">
+                            
                             <div class="card-text-container">
                                 <h4><?php echo $row['prod_name']; ?></h4>
                                 <p>₱<?php echo number_format($row['prod_price'], 2); ?></p>
@@ -236,7 +236,6 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
         </main>
     </div>
 
-    <!-- Product Info Modal -->
     <div id="modal" class="modal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.8);">
         <div class="modal-content" style="background:#fff; margin:10% auto; padding:30px; width:550px; border-radius:15px; position:relative; box-shadow: 0 5px 30px rgba(0,0,0,0.3);">
             <span class="close" onclick="closeModal()" style="position:absolute; right:20px; top:15px; font-size:35px; cursor:pointer; color:#888;">&times;</span>
@@ -253,7 +252,6 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
         </div>
     </div>
 
-    <!-- Sticky Floating Cart -->
     <a href="cart.php" class="sticky-cart" id="stickyCart" title="View Cart">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
             <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -285,7 +283,6 @@ $cart_count = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
         const startX = e ? e.clientX : window.innerWidth / 2;
         const startY = e ? e.clientY : window.innerHeight / 2;
 
-        // Disable button briefly to prevent double-clicks
         if (btnElement) {
             btnElement.disabled = true;
             btnElement.innerText = 'Adding...';
