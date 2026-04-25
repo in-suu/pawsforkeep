@@ -33,7 +33,7 @@ $low_stock = mysqli_fetch_assoc($low_res)['low'];
 
     <nav class="sidebar">
         <div class="logo-container">
-            <img src="images/logo.png" alt="Paws for Keeps Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <img src="https://res.cloudinary.com/dnsnpr8hu/image/upload/f_auto,q_auto/logo.png" alt="Paws for Keeps Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
             <h2 class="logo-fallback" style="display:none;">PAWS FOR KEEPS</h2>
         </div>
         <div class="divider"></div>
@@ -152,17 +152,26 @@ $low_stock = mysqli_fetch_assoc($low_res)['low'];
             </thead>
             <tbody id="tableBody">
                 <?php
+                // CLOUDINARY INTEGRATION
+                $cloudinary_base = "https://res.cloudinary.com/dnsnpr8hu/image/upload/f_auto,q_auto/";
                 $query = "SELECT * FROM tbl_products ORDER BY prod_name ASC";
                 $result = mysqli_query($conn, $query);
 
                 while ($row = mysqli_fetch_assoc($result)) {
                     $stock_color = ($row['prod_stock'] <= 0) ? 'red' : (($row['prod_stock'] <= 10) ? 'orange' : 'inherit');
                     $exp_date = ($row['prod_expiry'] == '0000-00-00' || !$row['prod_expiry']) ? 'N/A' : date('m/d/Y', strtotime($row['prod_expiry']));
+                    
+                    // Build full Cloudinary URL
+                    $db_image_path = trim($row['prod_image'], '/');
+                    $image_url = $cloudinary_base . str_replace(' ', '%20', $db_image_path);
                 ?>
                     <tr>
-                        <td><?php echo $row['prod_name']; ?></td>
+                        <td style="display:flex; align-items:center; gap:10px;">
+                            <img src="<?php echo $image_url; ?>" onerror="this.src='images/logo.png'" style="width:40px; height:40px; object-fit:contain; background:#f9f9f9; border-radius:5px;">
+                            <?php echo $row['prod_name']; ?>
+                        </td>
                         <td><p class="Category Food"><?php echo $row['prod_category']; ?></p></td>
-                        <td><?php echo $row['prod_id']; // Using ID as Serial for now ?></td>
+                        <td><?php echo $row['prod_id']; ?></td>
                         <td><span style="color:<?php echo $stock_color; ?>;"><?php echo $row['prod_stock']; ?></span></td>
                         <td><?php echo $exp_date; ?></td>
                         <td>₱<?php echo number_format($row['prod_price'], 2); ?></td>
