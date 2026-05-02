@@ -61,7 +61,7 @@ if (isset($_POST['submit_pitch'])) {
         <section class="bg-gray" id="team">
             <div class="content-flex">
                 <div class="img-frame">
-                    <img src="images/team-photo.png" alt="Our Team">
+                    <img src="../images/team-photo.png" alt="Our Team">
                 </div>
                 <div class="text-side">
                     <h2 class="section-heading">Be Part of Our Team</h2>
@@ -74,7 +74,7 @@ if (isset($_POST['submit_pitch'])) {
         <section class="bg-white" id="bulk-purchase">
             <div class="content-flex reverse">
                 <div class="img-frame">
-                    <img src="images/bulk-delivery.png" alt="Bulk Delivery">
+                    <img src="../images/bulk-delivery.png" alt="Bulk Delivery">
                 </div>
                 <div class="text-side">
                     <h2 class="section-heading">Bulk Purchase or Vouchers</h2>
@@ -87,7 +87,7 @@ if (isset($_POST['submit_pitch'])) {
         <section class="bg-gray" id="pitch-ideas">
             <div class="content-flex">
                 <div class="logo-side">
-                    <img src="images/logo-badge.png" alt="Paws for Keeps Badge" class="pitch-logo">
+                    <img src="../images/logo-badge.png" alt="Paws for Keeps Badge" class="pitch-logo">
                 </div>
                 <div class="form-side">
                     <h2 class="section-heading">Pitch your Ideas</h2>
@@ -104,7 +104,7 @@ if (isset($_POST['submit_pitch'])) {
             </div>
         </section>
 
-       <?php include 'footer.php'; ?>
+        <?php include 'footer.php'; ?>
     </main>
     <script src="search.js"></script>
 </body>

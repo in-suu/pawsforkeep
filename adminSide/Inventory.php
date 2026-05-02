@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
-include '../db_connect.php';
+include '../homepage/db_connect.php';
 $count_res = mysqli_query($conn, "SELECT COUNT(*) as total FROM tbl_products");
 $total_products = mysqli_fetch_assoc($count_res)['total'];
 

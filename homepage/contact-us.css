@@ -1,3 +1,8 @@
+:root {
+    --brand-yellow: #FFC947;
+    --text-brown: #7A4F2E;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,12 +12,12 @@
 
 body {
     background-color: #efefef;
-    padding-top: 80px;
+    padding-top: 75px;
 }
 
 .contact-hero {
     height: 655px;
-    background: url('images/contact-hero-bg.jpg') center/cover no-repeat;
+    background: url('../images/contact-hero-bg.jpg') center/cover no-repeat;
     position: relative;
     margin-top: 0;
 }

@@ -37,11 +37,11 @@ session_start();
 <body>
   <?php include 'navbar.php'; ?>
     <section class="visit-hero">
-        <img src="images/visit.png" alt="Visit Us Banner">
+        <img src="../images/visit.png" alt="Visit Us Banner">
     </section>
 
     <section class="container1">
-        <img src="images/store.png" class="branch-img">
+        <img src="../images/store.png" class="branch-img">
 
         <div class="card1">
             <div class="card-content1">
@@ -75,7 +75,7 @@ session_start();
             </div>
         </div>
 
-        <img src="images/tunasan.png" class="branch-img">
+        <img src="../images/tunasan.png" class="branch-img">
 
     </section>
 

@@ -1,15 +1,15 @@
- <footer class="main-footer">
+<footer class="main-footer">
         <div class="follow-us-bar">
             <p>Follow us on</p>
             <div class="social-icons">
                 <a href="https://www.facebook.com/pawsforkeepsbiz" target="_blank">
-                    <img src="images/facebook.png" alt="Facebook" style="width: 35px;">
+                    <img src="../images/facebook.png" alt="Facebook" style="width: 35px;">
                 </a>
                 <a href="https://www.instagram.com/pawsforkeepsbiz" target="_blank">
-                    <img src="images/instagram.png" alt="Instagram">
+                    <img src="../images/instagram.png" alt="Instagram">
                 </a>
                 <a href="https://x.com/pawsforkeeps" target="_blank">
-                    <img src="images/twitter.png" alt="X">
+                    <img src="../images/twitter.png" alt="X">
                 </a>
             </div>
         </div>

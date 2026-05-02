@@ -52,7 +52,7 @@ session_start();
             <a href="our-story.php" class="btn-primary">Our Story</a>
         </div>
         <div class="welcome-image-container">
-            <img src="images/pets.png" alt="Pets Group" class="main-pets-img">
+            <img src="../images/pets.png" alt="Pets Group" class="main-pets-img">
         </div>
     </section>
 
@@ -63,7 +63,7 @@ session_start();
             <div class="product-grid" id="productGrid">
                 <div class="product-card">
                     <div class="card-bg">
-                        <img src="images/dentastix.jpg" alt="Pedigree" class="floating-img">
+                        <img src="../images/dentastix.jpg" alt="Pedigree" class="floating-img">
                         <div class="card-text">
                             <h3>PEDIGREE DENTASTIX</h3>
                             <p>₱158.00</p>
@@ -72,79 +72,7 @@ session_start();
                 </div>
                 <div class="product-card">
                     <div class="card-bg">
-                        <img src="images/kitekat.jpg" alt="Kitekat" class="floating-img">
-                        <div class="card-text">
-                            <h3>KITEKAT CAT DRY FOOD</h3>
-                            <p>₱80.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="card-bg">
-                        <img src="images/shampoo.jpg" alt="Shampoo" class="floating-img">
-                        <div class="card-text">
-                            <h3>PLEASANT PET SHAMPOO</h3>
-                            <p>₱120.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="card-bg">
-                        <img src="images/absolute dental chew.jpg" alt="Dental Chew" class="floating-img">
-                        <div class="card-text">
-                            <h3>ABSOLUTE HOLISTIC DENTAL CHEW</h3>
-                            <p>₱90.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="card-bg">
-                        <img src="images/kitekat.jpg" alt="Whiskas" class="floating-img">
-                        <div class="card-text">
-                            <h3>WHISKAS WET FOOD</h3>
-                            <p>₱60.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="card-bg">
-                        <img src="images/dentastix.jpg" alt="Royal Canin" class="floating-img">
-                        <div class="card-text">
-                            <h3>ROYAL CANIN PUPPY</h3>
-                            <p>₱350.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="card-bg">
-                        <img src="images/shampoo.jpg" alt="Pet Wipes" class="floating-img">
-                        <div class="card-text">
-                            <h3>PET WIPES 100PCS</h3>
-                            <p>₱150.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="card-bg">
-                        <img src="images/kitekat.jpg" alt="SmartHeart" class="floating-img">
-                        <div class="card-text">
-                            <h3>SMARTHEART ADULT</h3>
-                            <p>₱95.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="card-bg">
-                        <img src="images/absolute dental chew.jpg" alt="Flea Collar" class="floating-img">
-                        <div class="card-text">
-                            <h3>FLEA & TICK COLLAR</h3>
-                            <p>₱220.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="card-bg">
-                        <img src="images/kitekat.jpg" alt="Meow Mix" class="floating-img">
+                        <img src="../images/kitekat.jpg" alt="Meow Mix" class="floating-img">
                         <div class="card-text">
                             <h3>MEOW MIX SEAFOOD</h3>
                             <p>₱110.00</p>

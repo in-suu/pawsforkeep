@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../db_connect.php'; 
+include '../homepage/db_connect.php';
 
 $message = "";
 $message_type = ""; 

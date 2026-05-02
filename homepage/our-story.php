@@ -52,7 +52,7 @@ session_start();
         <section class="bg-gray" id="store-vibe">
             <div class="story-flex">
                 <div class="story-img-frame">
-                    <img src="images/store-front.jpg" alt="Store Front">
+                    <img src="../images/store-front.jpg" alt="Store Front">
                 </div>
                 <div class="story-text">
                     <h2 class="section-heading">More Than Just a Store</h2>
@@ -76,11 +76,11 @@ session_start();
                 </div>
                 <div class="collage-container">
                     <div class="top-row">
-                        <img src="images/collab-1.jpg" alt="Collab 1">
-                        <img src="images/collab-2.jpg" alt="Collab 2">
+                        <img src="../images/collab-1.jpg" alt="Collab 1">
+                        <img src="../images/collab-2.jpg" alt="Collab 2">
                     </div>
                     <div class="bottom-row">
-                        <img src="images/maligayang-agosto.jpg" alt="Maligayang Agosto" class="full-width-img">
+                        <img src="../images/maligayang-agosto.jpg" alt="Maligayang Agosto" class="full-width-img">
                     </div>
                 </div>
             </div>

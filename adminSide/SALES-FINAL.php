@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
-include '../db_connect.php';
+include '../homepage/db_connect.php';
 $sales_res = mysqli_query($conn, "SELECT SUM(total_amount) as total FROM tbl_sales");
 $total_sales = mysqli_fetch_assoc($sales_res)['total'] ?? 0;
 

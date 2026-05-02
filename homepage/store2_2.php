@@ -13,13 +13,13 @@
  <?php include 'navbar.php'; ?>
 
     <section class="visit-hero">
-        <img src="images/visit.png" alt="Visit Us Banner">
+        <img src="../images/visit.png" alt="Visit Us Banner">
     </section>
 
     <section class="container">
 
         <div class="card">
-            <img src="images/tunasan.png" class="store-img">
+            <img src="../images/tunasan.png" class="store-img">
 
             <div class="card-content">
                 <h2><b>Paws for Keeps - Tunasan Branch</b></h2>
@@ -46,7 +46,7 @@
 
     </section>
 
-   <?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
     <script src="search.js"></script>
 </body>
 

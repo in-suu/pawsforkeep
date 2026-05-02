@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
-include '../db_connect.php';
+include '../homepage/db_connect.php';
 $query = "SELECT * FROM tbl_products WHERE prod_category LIKE '%Food%' OR prod_category LIKE '%Supplements%' ORDER BY prod_expiry ASC";
 $result = mysqli_query($conn, $query);
 

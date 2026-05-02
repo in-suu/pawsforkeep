@@ -3,17 +3,19 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    color: FFBE3E;
+    color: #FFBE3E; /* Fixed hex code format */
 }
 
 body {
     background-color: #ffffff;
-    padding-top: 80px;
+    /* 🛠️ Ginawang 75px para sumakto sa taas ng navbar at mawala ang gray bar */
+    padding-top: 75px; 
 }
 
 .hero-section {
     position: relative;
-    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    /* 🛠️ Updated image path to go up one level */
+    background: url('../images/hero-bg.jpg') center/cover no-repeat;
     height: 655px;
     display: flex;
     align-items: center;
@@ -32,6 +34,8 @@ body {
     background-color: rgba(0, 0, 0, 0.404);
     z-index: 1;
 }
+
+/* ... the rest of your code remains untouched ... */
 
 .hero-content {
     position: relative;
@@ -290,7 +294,6 @@ main,
 
 /* Mobile Responsive Layouts */
 @media (max-width: 768px) {
-    /* Hero section */
     .hero-content {
         padding: 0 15px;
         text-align: center;
@@ -309,7 +312,6 @@ main,
         background-position: center bottom;
     }
     
-    /* Stacking Layouts for side-by-side elements */
     .welcome-section {
         flex-direction: column-reverse;
         padding: 50px 5%;
@@ -337,7 +339,6 @@ main,
         margin: 0 auto;
     }
     
-    /* Carousel Adjustments */
     .carousel-wrapper {
         padding: 0 40px;
     }

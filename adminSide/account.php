@@ -5,7 +5,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
-include '../db_connect.php';
+include '../homepage/db_connect.php';
 $admin_id = $_SESSION['admin_id'];
 $query = "SELECT * FROM tbl_admin WHERE admin_id = '$admin_id'";
 $result = mysqli_query($conn, $query);
